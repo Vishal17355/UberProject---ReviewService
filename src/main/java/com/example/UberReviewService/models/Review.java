@@ -13,24 +13,14 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-@Table(name = "BookingReview")
-public class Review {
-    @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY )
 
-    private long id;
+@Table(name = "BookingReview")
+public class Review  extends BaseModel{
+
     @Column(nullable = false)
   private   String content;
    private double rating;
-    @Column(nullable = false)
-            @Temporal(TemporalType.TIMESTAMP) // this tell spring about the format of date object to be stored
-            @CreatedDate   // this annotation tell spring that only it for object creation
- private    Date createdAt;
-    @Column(nullable = false)
-            @Temporal(TemporalType.TIMESTAMP)
-            @LastModifiedDate
-  private   Date updatedAT;
+
 
     @Override
     public String toString(){
