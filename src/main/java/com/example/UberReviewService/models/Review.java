@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "BookingReview")
 public class Review  extends BaseModel{
 

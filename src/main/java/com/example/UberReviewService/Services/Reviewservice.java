@@ -1,6 +1,8 @@
 package com.example.UberReviewService.Services;
 
+import com.example.UberReviewService.models.Booking;
 import com.example.UberReviewService.models.Review;
+import com.example.UberReviewService.repositories.BookingRepository;
 import com.example.UberReviewService.repositories.ReviewRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,16 @@ import java.util.List;
 
 @Service
 public class Reviewservice implements CommandLineRunner {
+
     private  ReviewRepository reviewRepository ;
-    public Reviewservice(ReviewRepository reviewRepository) {
+
+    private final BookingRepository bookingRepository;
+
+    public Reviewservice(ReviewRepository reviewRepository, BookingRepository bookingRepository) {
+
         this.reviewRepository = reviewRepository;
+
+        this.bookingRepository=bookingRepository;
     }
 
     @Override
@@ -21,7 +30,15 @@ public class Reviewservice implements CommandLineRunner {
         Review r = Review.builder()
                 .content("Amazon ride quality")
                 .rating(5.0)
-                .build(); // code to crreate plan  java object
+                .build(); // code to crreate plan  java object\
+        Booking b = Booking
+                .builder()
+                .driver(r)
+                .endtime(new Date())
+                .build();
+
+        bookingRepository.save(b);
+
         System.out.println(r);
         reviewRepository.save(r); // this code execute sql query;
          List<Review> reviews = reviewRepository.findAll();
