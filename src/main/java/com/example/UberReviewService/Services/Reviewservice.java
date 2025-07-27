@@ -9,42 +9,44 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Reviewservice implements CommandLineRunner {
 
-    private  ReviewRepository reviewRepository ;
-
+    private final ReviewRepository reviewRepository;
     private final BookingRepository bookingRepository;
 
     public Reviewservice(ReviewRepository reviewRepository, BookingRepository bookingRepository) {
-
         this.reviewRepository = reviewRepository;
-
-        this.bookingRepository=bookingRepository;
+        this.bookingRepository = bookingRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("***************");
-        Review r = Review.builder()
-                .content("Amazon ride quality")
-                .rating(5.0)
-                .build(); // code to crreate plan  java object\
-        Booking b = Booking
-                .builder()
-                .driver(r)
-                .endtime(new Date())
-                .build();
 
-        bookingRepository.save(b);
-
-        System.out.println(r);
-        reviewRepository.save(r); // this code execute sql query;
-         List<Review> reviews = reviewRepository.findAll();
-        for (Review review: reviews){
-            System.out.println(r.getContent());
-        }
-        reviewRepository.deleteById(2L);
+//        Review r = Review.builder()
+//                .content("Amazing ride quality")
+//                .rating(5.0)
+//                .build();
+//
+//        Booking b = Booking.builder()
+//                .review(r)
+//                .endtime(new Date())
+//                .build();
+//
+//        bookingRepository.save(b); // No need to save Review separately due to Cascade.ALL
+//
+//        List<Review> reviews = reviewRepository.findAll();
+//        for (Review review : reviews) {
+//            System.out.println(review.getContent());
+//        }
+//
+//        reviewRepository.deleteById(2L); // Only if this ID exists
+     Optional <Booking> b =bookingRepository.findById(6l);
+     if(b.isPresent()){
+         bookingRepository.delete(b.get());
+     }
     }
 }
