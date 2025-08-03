@@ -1,25 +1,28 @@
 package com.example.UberReviewService.Services;
 
 import com.example.UberReviewService.models.Booking;
+import com.example.UberReviewService.models.Driver;
 import com.example.UberReviewService.models.Review;
 import com.example.UberReviewService.repositories.BookingRepository;
+import com.example.UberReviewService.repositories.DriverRepository;
 import com.example.UberReviewService.repositories.ReviewRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class Reviewservice implements CommandLineRunner {
 
     private final ReviewRepository reviewRepository;
     private final BookingRepository bookingRepository;
-
-    public Reviewservice(ReviewRepository reviewRepository, BookingRepository bookingRepository) {
+    private final DriverRepository driverRepository;
+    public Reviewservice(ReviewRepository reviewRepository, BookingRepository bookingRepository , DriverRepository driverRepository) {
         this.reviewRepository = reviewRepository;
         this.bookingRepository = bookingRepository;
+        this.driverRepository= driverRepository;
     }
 
     @Override
@@ -44,9 +47,26 @@ public class Reviewservice implements CommandLineRunner {
 //        }
 //
 //        reviewRepository.deleteById(2L); // Only if this ID exists
-     Optional <Booking> b =bookingRepository.findById(6l);
-     if(b.isPresent()){
-         bookingRepository.delete(b.get());
-     }
+//     Optional <Booking> b =bookingRepository.findById(6l);
+//     if(b.isPresent()){
+//
+//     }
+
+    //    bookingRepository.delete(b.get());
+//
+//     Optional<Driver> driver= driverRepository.findById(1L  );
+//     if (driver.isPresent()){
+//        System.out.println(driver.get().getName());
+//        List<Booking> b=  driver.get().getBookings();
+////         List<Booking> bookings = bookingRepository.findAllBydriverId(1L);
+//         for(Booking booking : b){
+//            System.out.println(booking.getBookingStatus());}
+//    }
+ Optional <Driver> d = driverRepository.hblFindByIdAndLicenseNumber(1L , "Dl1212");
+        if (d.isPresent()) {
+            System.out.println(d.get().getName());
+        } else {
+            System.out.println("Driver not found.");
+        }
     }
 }
