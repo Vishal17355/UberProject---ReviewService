@@ -10,9 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 @Service
 public class Reviewservice implements CommandLineRunner {
 
@@ -62,11 +61,23 @@ public class Reviewservice implements CommandLineRunner {
 //         for(Booking booking : b){
 //            System.out.println(booking.getBookingStatus());}
 //    }
- Optional <Driver> d = driverRepository.hblFindByIdAndLicenseNumber(1L , "Dl1212");
-        if (d.isPresent()) {
-            System.out.println(d.get().getName());
-        } else {
-            System.out.println("Driver not found.");
-        }
+// Optional <Driver> d = driverRepository.hblFindByIdAndLicenseNumber(1L , "Dl1212");
+//        if (d.isPresent()) {
+//            System.out.println(d.get().getName());
+//        } else {
+//            System.out.println("Driver not found.");
+//        }
+
+
+        List<Long> driverIds = new ArrayList<>(Arrays.asList(1L , 2L , 3L , 4L , 5L));
+        List<Driver> drivers = driverRepository.findAllByIdIn(driverIds);
+
+  //    List<Booking> bookings = bookingRepository.findAllByDriverIn(drivers);
+     for (Driver driver : drivers){
+         System.out.println(driver.getBookings().size());
+       final  Set<Booking> bookings=driver.getBookings();
+        bookings.forEach((booking -> System.out.println(booking.getId())));
+     }
+
     }
 }

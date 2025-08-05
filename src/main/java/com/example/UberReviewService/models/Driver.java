@@ -2,10 +2,14 @@ package com.example.UberReviewService.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.repository.cdi.Eager;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,5 +25,12 @@ public class Driver extends BaseModel {
     private String licenseNumber;
 
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-    private List<Booking> bookings = new ArrayList<>();
+            @Fetch(value=FetchMode.SUBSELECT)
+            @Builder.Default
+     private Set<Booking> bookings = new HashSet<>();
+
+
+
+
+
 }

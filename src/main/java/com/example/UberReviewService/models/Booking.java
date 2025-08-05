@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class Booking extends BaseModel {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST , CascadeType.REMOVE} , fetch = FetchType.LAZY)
     private Review review;
 
     @Enumerated(EnumType.STRING)
@@ -27,9 +27,9 @@ public class Booking extends BaseModel {
 
     private long totalDist;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Driver driver;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Passenger passenger;
 }
