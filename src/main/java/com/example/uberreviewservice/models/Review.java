@@ -1,4 +1,4 @@
-package com.example.UberReviewService.models;
+package com.example.uberreviewservice.models;
 
 import jakarta.persistence.*;
 import lombok.*;

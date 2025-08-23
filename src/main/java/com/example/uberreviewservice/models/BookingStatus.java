@@ -1,4 +1,4 @@
-package com.example.UberReviewService.models;
+package com.example.uberreviewservice.models;
 
 public enum BookingStatus {
     INITIATED,

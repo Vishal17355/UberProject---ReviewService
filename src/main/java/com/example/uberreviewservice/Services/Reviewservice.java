@@ -1,11 +1,11 @@
-package com.example.UberReviewService.Services;
+package com.example.uberreviewservice.Services;
 
-import com.example.UberReviewService.models.Booking;
-import com.example.UberReviewService.models.Driver;
-import com.example.UberReviewService.models.Review;
-import com.example.UberReviewService.repositories.BookingRepository;
-import com.example.UberReviewService.repositories.DriverRepository;
-import com.example.UberReviewService.repositories.ReviewRepository;
+import com.example.uberreviewservice.models.Booking;
+import com.example.uberreviewservice.models.Driver;
+import com.example.uberreviewservice.models.Review;
+import com.example.uberreviewservice.repositories.BookingRepository;
+import com.example.uberreviewservice.repositories.DriverRepository;
+import com.example.uberreviewservice.repositories.ReviewRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 

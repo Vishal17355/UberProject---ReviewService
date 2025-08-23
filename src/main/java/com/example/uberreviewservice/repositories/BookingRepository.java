@@ -1,7 +1,8 @@
-package com.example.UberReviewService.repositories;
+package com.example.uberreviewservice.repositories;
 
-import com.example.UberReviewService.models.Booking;
-import com.example.UberReviewService.models.Driver;
+
+import com.example.uberreviewservice.models.Booking;
+import com.example.uberreviewservice.models.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
