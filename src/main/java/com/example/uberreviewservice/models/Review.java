@@ -18,6 +18,8 @@ public class Review extends BaseModel {
 
     private double rating;
 
+
+
     @Override
     public String toString() {
         return "Review: " + this.content + " " + this.rating + " " + this.createdAt;

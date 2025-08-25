@@ -1,10 +1,10 @@
-CREATE TABLE booking
+CREATE TABLE IF NOT EXISTS booking
 (
     id             BIGINT AUTO_INCREMENT NOT NULL,
     created_at     datetime NOT NULL,
     updatedat      datetime NOT NULL,
     review_id      BIGINT NULL,
-    booking_status VARCHAR(255) NULL,
+    booking_status ENUM( 'INITIATED','COMPLETED','CANCELLED','SCHEDULED') NULL,
     starttime      datetime NULL,
     endtime        datetime NULL,
     total_dist     BIGINT   NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE booking
     CONSTRAINT pk_booking PRIMARY KEY (id)
 );
 
-CREATE TABLE booking_review
+CREATE TABLE IF NOT EXISTS booking_review
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime     NOT NULL,
