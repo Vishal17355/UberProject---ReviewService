@@ -1,5 +1,6 @@
 package com.example.uberreviewservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @ToString(exclude = "bookings")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" , "bookings"})
 public class Driver extends BaseModel {
     private String name;
 

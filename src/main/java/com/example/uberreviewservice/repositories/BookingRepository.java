@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface   BookingRepository extends JpaRepository<Booking, Long> {
 
 
-     @Query("SELECT  r from  Booking  b inner join  Review r on b.review=r where b.id=:booking")
-    Review findReviewByBookingId(Long bookingId);
+
 
 
 }

@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "BookingReview")
+
 public class Review extends BaseModel {
 
     @Column(nullable = false)
@@ -18,10 +19,12 @@ public class Review extends BaseModel {
 
     private double rating;
 
-
+    @OneToOne(cascade = {CascadeType.ALL} , fetch = FetchType.LAZY)
+@JoinColumn(nullable = false)
+    private Booking booking;
 
     @Override
     public String toString() {
-        return "Review: " + this.content + " " + this.rating + " " + this.createdAt;
+        return "Review: " + this.content + " " + this.rating + " "  + " booking :" + this.booking.getId() + " " + this.createdAt;
     }
 }
